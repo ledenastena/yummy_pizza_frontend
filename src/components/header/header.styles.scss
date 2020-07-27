@@ -1,0 +1,18 @@
+$textDarkColor: #242424;
+
+.header-container {
+  display: flex;
+  font-size: 18px;
+  color: $textDarkColor;
+
+  a {
+    text-decoration: none;
+    margin: 5px 15px;
+    padding: 8px;
+
+    &:visited {
+      color: $textDarkColor;
+    }
+  }
+
+}

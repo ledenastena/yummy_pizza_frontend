@@ -1,16 +1,51 @@
 import productActionTypes from './product.types';
-import { retrieveItems } from './product.utils';
 
 const INITIAL_STATE = {
-  items: []
+  items: [],
+  types: {},
+  isFetching: false,
+  errorMessage: undefined
 }
 
 const productReducer = (state = INITIAL_STATE, action) => {
   switch( action.type ) {
-    case ( productActionTypes.UPDATE_PRODUCT_STATE ): {
+    case (productActionTypes.FETCH_PRODUCTS_START): {
       return {
         ...state,
-        items: retrieveItems(action.payload)
+        isFetching: true
+      }
+    }
+    case (productActionTypes.FETCH_PRODUCTS_SUCCESS): {
+      return {
+        ...state,
+        isFetching: false,
+        items: action.payload
+      }
+    }
+    case (productActionTypes.FETCH_PRODUCTS_FAILURE): {
+      return {
+        ...state,
+        isFetching: false,
+        errorMessage: action.payload
+      }
+    }
+    case (productActionTypes.FETCH_TYPES_START): {
+      return {
+        ...state,
+        isFetching: true
+      }
+    }
+    case (productActionTypes.FETCH_TYPES_SUCCESS): {
+      return {
+        ...state,
+        types: action.payload
+      }
+    }
+    case (productActionTypes.FETCH_TYPES_FAILURE): {
+      return {
+        ...state,
+        isFetching: false,
+        errorMessage: action.payload
       }
     }
     default: {

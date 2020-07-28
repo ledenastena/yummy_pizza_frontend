@@ -1,40 +1,56 @@
 import React from 'react';
 import './products.styles.scss';
-import { updateProductState } from '../../redux/product/product.actions';
-import { selectItems } from '../../redux/product/product.selectors';
+import ProductList from '../../components/product-list/product-list.component';
+import { fetchTypesStartAsync } from '../../redux/product/product.actions';
+import { selectItems, selectIsFetching, selectErrorMessage } from '../../redux/product/product.selectors';
 import { connect } from 'react-redux';
 
-class ProductsPage extends React.Component {
-  componentDidMount() {
-    const { updateProductState } = this.props;
+class ProductsPage extends React.Component {  
 
-    fetch( 'https://yummypizza-api.herokuapp.com/api/products' )
-    .then( response => response.json())
-    .then( data => {
-      updateProductState( data )
-    });
+  componentDidMount() {
+    const { fetchTypesStartAsync } = this.props;
+    const typeParam = this.props.match.params.type;
+
+    fetchTypesStartAsync( typeParam );
   }
 
   render() {
-    const { items } = this.props;
-    return (
-      <div className='products-page-container'>
-        {
-          items.map( item => (
-          <p key={ item.id }>{ item.name }</p>
-          ))
-        }
-      </div>
-    );
+    const { items, isFetching, errorMessage } = this.props;
+    if ( isFetching ) {
+      return (
+        <p>Loading...</p>
+      )
+    }
+    else {
+      if ( items.length === 0) {
+        return (
+          <div className='products-page-container'>
+             { errorMessage?
+               <p>{ errorMessage }</p>
+               :
+               <p>No products match the search parameters</p>
+             }
+          </div>
+        );
+      }
+
+      return (
+        <div className='products-page-container'>
+          <ProductList />
+        </div>
+      );
+    }
   }
 }
 
 const mapStateToProps = ( state ) => ({
-  items: selectItems( state )
-})
+  isFetching: selectIsFetching( state ),
+  items: selectItems( state ),
+  errorMessage: selectErrorMessage( state )
+});
 
 const mapDispatchToProps = ( dispatch ) => ({
-  updateProductState: ( payload ) => dispatch( updateProductState( payload ) )
+  fetchTypesStartAsync: ( typeParam ) => dispatch( fetchTypesStartAsync( typeParam ))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProductsPage);

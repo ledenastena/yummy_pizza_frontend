@@ -6,3 +6,18 @@ export const selectItems = createSelector(
   [ selectProduct ],
   product => product.items
 );
+
+export const selectTypes = createSelector(
+  [ selectProduct ],
+  product => product.types
+);
+
+export const selectIsFetching = createSelector(
+  [ selectProduct ],
+  product => product.isFetching
+);
+
+export const selectErrorMessage = createSelector(
+  [ selectProduct ],
+  product => product.errorMessage
+);

@@ -25,10 +25,15 @@ module.exports = {
 			{
 				test: /\.scss$/,
 				use: ['style-loader', 'css-loader', 'sass-loader']
-			}
+			},
+			{
+				test: /\.css$/,
+				use: ['style-loader', 'css-loader']
+			},
+			{test: /\.png$/, loader: "file-loader"},
 		]
 	},
 	plugins: [new HtmlWebpackPlugin({
 		template: './src/template.html'
-	})]
+		})]
 }

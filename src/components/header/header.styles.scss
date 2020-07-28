@@ -1,9 +1,13 @@
-$textDarkColor: #242424;
+$textColor: #525252;
+
 
 .header-container {
   display: flex;
+  flex-direction: column;
+  align-items: center;
   font-size: 18px;
-  color: $textDarkColor;
+  color: $textColor;
+  margin-bottom: 50px;
 
   a {
     text-decoration: none;
@@ -11,8 +15,32 @@ $textDarkColor: #242424;
     padding: 8px;
 
     &:visited {
-      color: $textDarkColor;
+      color: $textColor;
     }
   }
 
+  .home-link {
+    font-size: 40px;
+    font-weight: 300;
+    padding: 20px;
+    margin: 15px 0;
+  }
+
+  .navigation-links {
+
+    .regular-menu {
+      display: none;
+    }
+
+    .hamburger-menu-button {
+      cursor: pointer;
+
+      .hamburger-bar {
+          width: 30px;
+          height: 3px;
+          background-color: $textColor;
+          margin: 4px 0;
+      }
+    }
+  }
 }

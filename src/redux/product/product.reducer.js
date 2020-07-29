@@ -4,7 +4,8 @@ const INITIAL_STATE = {
   items: [],
   types: {},
   isFetching: false,
-  errorMessage: undefined
+  errorMessage: undefined,
+  selectedCurrency: 'eur'
 }
 
 const productReducer = (state = INITIAL_STATE, action) => {
@@ -46,6 +47,12 @@ const productReducer = (state = INITIAL_STATE, action) => {
         ...state,
         isFetching: false,
         errorMessage: action.payload
+      }
+    }
+    case ( productActionTypes.CHANGE_CURRENCY ): {
+      return {
+        ...state,
+        selectedCurrency: state.selectedCurrency === 'eur' ? 'usd' : 'eur'
       }
     }
     default: {

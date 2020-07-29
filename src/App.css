@@ -82,12 +82,12 @@ a {
   .col-m-11 {width: 91.66%}
   .col-m-12 {width: 100%}
 
-  .app-container .header-container .navigation-links .regular-menu {
+  .app-container .header-container .header-content-width .navigation-links .regular-menu {
     display: flex;
     align-items: center;
   }  
   
-  .app-container .header-container .navigation-links .hamburger-menu-button {
+  .app-container .header-container .header-content-width .navigation-links .hamburger-menu-button {
     display: none;
   }
   

@@ -7,14 +7,6 @@ import { connect } from 'react-redux';
 class ProductList extends React.Component {
   render() {
     const { items } = this.props;
-    const image = 'src/assets/square.png';
-    if ( !items ) {
-      return (
-        <div className='product-list-container'>
-          There was a server error
-        </div>
-      )
-    } 
     return (
       <div className='product-list-container'>
         <div className='row'>

@@ -8,6 +8,7 @@ $smallBtnColor: #2abbc6;
   color: $textColor;
   display: flex;
   flex-direction: column;
+  align-items: center;
   height: 100%;
   overflow: hidden;
   transition: all 0.5s ease;
@@ -20,6 +21,7 @@ $smallBtnColor: #2abbc6;
   
   .list-image {
     width: 100%;
+    max-width: 450px;
     margin: 0 auto 20px auto;
   }
   

@@ -1,6 +1,10 @@
 import productActionTypes from './product.types';
 import { retrieveTypes } from './product.utils';
 
+export const changeCurrency = () => ({
+  type: productActionTypes.CHANGE_CURRENCY
+});
+
 /* Fetchin products actions */
 
 export const fetchProductsStart = () => ({

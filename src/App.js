@@ -2,9 +2,10 @@ import React from 'react';
 import './App.css';
 import { Switch, Route } from 'react-router-dom';
 import Header from './components/header/header.component';
+import Footer from './components/footer/footer.component';
 import HomePage from './pages/home/home.component';
 import ProductsPage from './pages/products/products.component';
-
+import CheckoutPage from './pages/checkout/checkout.component';
 class App extends React.Component {
   componentDidMount() {
   }
@@ -37,9 +38,11 @@ class App extends React.Component {
             {/* Using a hashCode function to get a unique key based on the 'type' parameter which is a string
                 This way we ensure that ProductPage components  remounts when the route parameter changes      */}
 
+            <Route path='/checkout' component={ CheckoutPage } />
             <Route path='/' component={ HomePage } />
           </Switch>
         </div>
+        <Footer />
       </div>
     );
   }

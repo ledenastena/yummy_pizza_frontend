@@ -21,3 +21,8 @@ export const selectErrorMessage = createSelector(
   [ selectProduct ],
   product => product.errorMessage
 );
+
+export const selectCurrency = createSelector(
+  [ selectProduct ],
+  product => product.selectedCurrency
+);

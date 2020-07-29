@@ -1,5 +1,6 @@
 import React from 'react';
 import './home.styles.scss';
+import { Link } from 'react-router-dom';
 
 class HomePage extends React.Component {
   componentDidMount() {
@@ -9,7 +10,9 @@ class HomePage extends React.Component {
 
     return (
       <div className='homepage-container'>
-        <h2>This is the homepage</h2>
+        <Link to='/products'>
+          <img src={ `src/assets/pizza_bg.png` } className='home-image' />
+        </Link>
       </div>
     );
   }
